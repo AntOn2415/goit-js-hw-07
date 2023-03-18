@@ -5,7 +5,6 @@ console.log(galleryItems);
 const galleryEl = document.querySelector(".gallery");
 const galleryMarkup = createGalleryMarkup(galleryItems);
 
-galleryEl.addEventListener("click", onGelleryElClick);
 galleryEl.insertAdjacentHTML("beforeend", galleryMarkup);
 
 function createGalleryMarkup(galleryItems) {
@@ -19,19 +18,9 @@ function createGalleryMarkup(galleryItems) {
     })
     .join("");
 }
-
-function onGelleryElClick(e) {
-  blockTargetBlank(e);
-  if (e.target.nodeName !== "IMG") {
-    return;
-  }
-  new SimpleLightbox(".gallery a", {
-    captions: true,
-    captionsData: "alt",
-    captionDelay: 250,
-  });
-}
-
-function blockTargetBlank(e) {
-  e.preventDefault();
-}
+const lightbox = new SimpleLightbox(".gallery a", {
+  captions: true,
+  captionsData: "alt",
+  captionDelay: 250,
+});
+lightbox.open();

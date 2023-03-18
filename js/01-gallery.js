@@ -5,7 +5,7 @@ console.log(galleryItems);
 const galleryEl = document.querySelector(".gallery");
 const galleryMarkup = createGalleryMarkup(galleryItems);
 
-galleryEl.addEventListener("click", onGelleryElClick);
+galleryEl.addEventListener("click", onGalleryElClick);
 galleryEl.insertAdjacentHTML("beforeend", galleryMarkup);
 
 function createGalleryMarkup(galleryItems) {
@@ -24,7 +24,7 @@ function createGalleryMarkup(galleryItems) {
     })
     .join("");
 }
-function onGelleryElClick(e) {
+function onGalleryElClick(e) {
   blockTargetBlank(e);
   if (e.target.nodeName !== "IMG") {
     return;
