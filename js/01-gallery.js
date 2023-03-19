@@ -24,24 +24,22 @@ function createGalleryMarkup(galleryItems) {
     })
     .join("");
 }
+
 function onGalleryElClick(e) {
-  blockTargetBlank(e);
+  e.preventDefault();
   if (e.target.nodeName !== "IMG") {
     return;
   }
   const instance = basicLightbox.create(`
     <img src="${e.target.dataset.source}" width="800" height="600">
-`);
+  `);
   instance.show();
 
   galleryEl.addEventListener("keydown", onEscKeyPress);
+
   function onEscKeyPress(e) {
     if (e.code === "Escape") {
-      instance.close();
+      instance.close(galleryEl.removeEventListener("keydown", onEscKeyPress));
     }
   }
-}
-
-function blockTargetBlank(e) {
-  e.preventDefault();
 }
